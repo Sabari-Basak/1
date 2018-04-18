@@ -1,0 +1,52 @@
+#include<stdio.h> 
+#include<stdlib.h> 
+ 
+int main() 
+ { 
+   int at[100],bt[100],temp[100];    
+   int n,i,t,s, count = 0; 
+   double wait_time =0, turnaround_time = 0,cmp;  
+   float avgwait_time,avgturnaround_time;  
+ 	 
+   printf("Enter the total number of processes:"); 
+   scanf("%d",&n; 
+
+   printf("\n Enter Details of Processes\n"); 
+   for(i = 0; i < n; i++) 
+     { 
+       printf("\nEnter Arrival Time:"); 
+       scanf("%d",&at[i]); 
+       printf("Enter Burst Time:"); 
+       scanf("%d",&bt[i]; 
+       temp[i] = bt[i]; 
+     } 
+   
+bt[9] = 100000;   
+ for(t=0; count!=n; t++) 
+   { 
+     s=9; 
+   for(i=0; i<n; i++) 
+     { 
+       if(at[i]<=t && bt[i] < bt[s] && bt[i] > 0) 
+        { 
+          s=i; 
+        } 
+     } 
+      bt[s]--; 
+      if(bt[s]==0) 
+       { 
+         count++; 
+         cmp = t+1; 
+         wait_time = wait_time + cmp - at[s] - temp[s]; 
+         turnaround_time = turnaround_time + cmp - at[s]; 
+       } 
+   } 
+       
+    avgwait_time = wait_time / n;  
+    avgturnaround_time = turnaround_time / n; 
+
+  printf("\n\n Average Waiting Time:", avgwait_time"); 
+  printf("\n Average Turnaround Time:",avgturnaround_time"); 
+  return 0; 
+
+} 
